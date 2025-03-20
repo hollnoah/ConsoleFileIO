@@ -13,8 +13,11 @@ Module FileIO
         ' WriteToFile()
         'AppendToFile()
         ' ReadFromFile()
-        DocExample()
-        ReadAllRecords()
+        ' DocExample()
+        '  ReadAllRecords()
+        Console.WriteLine(RecordCountIn("TestFile.txt"))
+        Console.WriteLine(LineCountIn("TestFile.txt"))
+
     End Sub
 
     Sub WriteToFile()
@@ -125,13 +128,45 @@ Module FileIO
         Dim count As Integer
         '  Try
         FileOpen(1, "TestFile.txt", OpenMode.Input)
-            Do Until EOF(1)
-                Input(1, currentRecord)
+        Do Until EOF(1)
+            Input(1, currentRecord)
             Console.WriteLine($"Record {count} contains: {currentRecord}")
         Loop
-            FileClose(1)
-            'Catch ex As Exception
+        FileClose(1)
+        'Catch ex As Exception
 
         ' End Try
     End Sub
+
+    Function RecordCountIn(fileName As String) As Integer
+        Dim count As Integer = -1
+        Try
+            FileOpen(1, fileName, OpenMode.Input)
+            Do Until EOF(1)
+
+                Input(1, "")
+                count += 1
+            Loop
+            FileClose(1)
+        Catch ex As Exception
+            count = -1
+        End Try
+        Return count
+    End Function
+
+    Function LineCountIn(fileName As String) As Integer
+        Dim count As Integer = -1
+        Try
+            FileOpen(1, fileName, OpenMode.Input)
+            Do Until EOF(1)
+
+                LineInput(1, "")
+                count += 1
+            Loop
+            FileClose(1)
+        Catch ex As Exception
+            count = -1
+        End Try
+        Return count
+    End Function
 End Module
