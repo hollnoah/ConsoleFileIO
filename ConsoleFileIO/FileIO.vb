@@ -12,7 +12,7 @@ Module FileIO
     Sub Main()
         ' WriteToFile()
         'AppendToFile()
-        ReadFromFile()
+        ' ReadFromFile()
         DocExample()
         ReadAllRecords()
     End Sub
@@ -99,7 +99,14 @@ Module FileIO
         ' your system.
         WriteLine(1, aBool & " is a Boolean value.")
         WriteLine(1, aDate & " is a date.")
-        ' Close the file.
+
+        'noah here
+        WriteLine(1)
+        Write(1, aBool)
+        Write(1, aDate)
+        Write(1, 5)
+        Write(1, 3.23432)
+        ' Close the file
         FileClose(1)
 
         ' Contents of TestFile.txt
